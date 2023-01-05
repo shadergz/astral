@@ -9,5 +9,11 @@ set(CMAKE_C_VISIBILITY_PRESET hidden)
 set(CMAKE_C_BYTE_ORDER LITTLE_ENDIAN)
 
 add_executable(astral)
-target_sources(astral PRIVATE src/local_entry.c)
+target_sources(astral PRIVATE
+        src/local_entry.c
+        src/heap_objects.c
+        src/terminal.c
+        src/valtiel.c)
 target_link_libraries(astral PRIVATE OpenCL::Headers)
+
+target_include_directories(astral PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)

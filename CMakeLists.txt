@@ -13,7 +13,8 @@ target_sources(astral PRIVATE
         src/local_entry.c
         src/heap_objects.c
         src/terminal.c
-        src/valtiel.c)
+        src/valtiel.c
+        src/user.c)
 target_link_libraries(astral PRIVATE OpenCL::Headers)
 
 target_include_directories(astral PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)

@@ -6,13 +6,11 @@
 
 #define VALTIEL_CMP_CTX(source, ctx)\
     if (strncmp(source->func_name, ctx, strlen(ctx)) == 0)
-
 i32 valtiel_context(const valtiel_source_t* val_source)
 {
     VALTIEL_CMP_CTX(val_source, "valtiel_init") return ASTRAL_EVENT_INSIDE_INIT;
     return -1;
 }
-
 #undef VALTIEL_CMP_CTX
 
 i32 valtiel_do(astral_ctx_t* astral_ctx, valtiel_level_e level,
@@ -20,12 +18,7 @@ i32 valtiel_do(astral_ctx_t* astral_ctx, valtiel_level_e level,
 {
     if (astral_ctx != NULL)
     {
-        switch (valtiel_context(val_source))
-        {
-        case ASTRAL_EVENT_INSIDE_INIT:
-            astral_ctx->event_caught(astral_ctx, ASTRAL_EVENT_INSIDE_INIT, message, NULL);
-            break;
-        }
+        astral_ctx->event_caught(astral_ctx, valtiel_context(val_source), message, NULL);
     }
 
     if (level == VALTIEL_LEVEL_ERROR)
